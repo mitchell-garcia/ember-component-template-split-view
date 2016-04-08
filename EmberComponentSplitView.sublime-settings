@@ -1,0 +1,4 @@
+{
+	//Define the following if you don't want the plugin to automatically detect if you're using pods
+	//'usePods':true
+}

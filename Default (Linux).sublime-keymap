@@ -1,0 +1,3 @@
+[
+	{ "keys": ["ctrl+shift+k"], "command": "view.run_command('ember_component_split_view')" }
+]
