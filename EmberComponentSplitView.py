@@ -2,10 +2,9 @@ import sublime, sublime_plugin, logging
 
 class EmberComponentSplitViewCommand(sublime_plugin.WindowCommand):
 
-	# @private findCompanionPodStructure
+	# @public findCompanionPodStructure
 	# @return {String} newFile - the file to open
 	def findCompanionPodStructure(self):
-		print('findCompanionPodStructure')
 		if 'hbs' in self.reference_file_type:
 			companion_file = self.reference_file_path + '/route.js'
 		else:
@@ -13,10 +12,9 @@ class EmberComponentSplitViewCommand(sublime_plugin.WindowCommand):
 
 		return companion_file
 
-	# @private findCompanionFolderStucture
+	# @public findCompanionFolderStucture
 	# @return {String} newFile - the file to open 
 	def findCompanionFolderStucture(self):
-		print('findCompanionFolderStucture')
 		base_path = self.reference_file_path.rsplit('/app/', 1)[0] + '/app/'
 
 		if 'hbs' in self.reference_file_type:
@@ -32,14 +30,12 @@ class EmberComponentSplitViewCommand(sublime_plugin.WindowCommand):
 		settings = sublime.load_settings('EmberComponentSplitView.sublime-settings')
 		use_pods_defined = settings.has('usePods')
 	
-		print(use_pods_defined)	
-
 		if(use_pods_defined):
 			return settings.get('usePods')
 
 		return 'pods' in self.reference_file_location
 
-	# @private findFile
+	# @public findFile
 	# @return {String} fileToOpen
 	def processFile(self):
 		self.reference_file = self.window.active_view().file_name()
@@ -49,8 +45,6 @@ class EmberComponentSplitViewCommand(sublime_plugin.WindowCommand):
 		self.reference_file_location = self.reference_file_path.rsplit('/app/', 1)[1]
 
 		usePods = self.checkIfUsePods()
-
-		print(usePods)
 
 		if usePods:
 			companion_file = self.findCompanionPodStructure()
