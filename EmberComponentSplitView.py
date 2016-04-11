@@ -6,7 +6,7 @@ class EmberComponentSplitViewCommand(sublime_plugin.WindowCommand):
 	# @return {String} newFile - the file to open
 	def findCompanionPodStructure(self):
 		if 'hbs' in self.reference_file_type:
-			companion_file = self.reference_file_path + '/route.js'
+			companion_file = self.reference_file_path + '/component.js'
 		else:
 			companion_file = self.reference_file_path + '/template.hbs'
 
